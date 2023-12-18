@@ -9,7 +9,7 @@ link = input("Your video link :")
 # Recuperate the video with the link
 yt = YouTube(link)
 
-# Download the video
+# Download the video and recuperate the filename
 yt.streams.filter(file_extension='mp4').first().download()
 filename = yt.streams.filter(file_extension='mp4').first().default_filename
 
@@ -26,16 +26,12 @@ f = open(f"{filename}.srt", "x")
 
 # For each segments of audio
 for segment in segments:
-    # The start time of the audio
+    # The start and the end time of the audio
     startTime = str(0) + str(timedelta(seconds=int(segment['start']))) + ',000'
-    
-    # The end time of the audio
     endTime = str(0) + str(timedelta(seconds=int(segment['end']))) + ',000'
 
-    # The text of the segment
+    # The text and the Id of the segment
     text = segment['text']
-
-    # The Id of the segment
     segmentId = segment['id']+1
 
     # The line for the subtitles in the .srt file

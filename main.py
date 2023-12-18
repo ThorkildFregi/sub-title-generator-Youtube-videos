@@ -26,10 +26,10 @@ f = open(f"{filename}.srt", "x")
 
 # For each segments of audio
 for segment in segments:
-    # The start of the audio
+    # The start time of the audio
     startTime = str(0) + str(timedelta(seconds=int(segment['start']))) + ',000'
     
-    # The end of the audio
+    # The end time of the audio
     endTime = str(0) + str(timedelta(seconds=int(segment['end']))) + ',000'
 
     # The text of the segment
